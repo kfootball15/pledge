@@ -93,12 +93,12 @@ describe('A promise', function(){
       expect( fn.setFoo10 ).toHaveBeenCalled();
     });
 
-    xit("calls a success handler by passing in the promise's value", function(){
+    it("calls a success handler by passing in the promise's value", function(){
       promiseForNum.then( fn.addToFoo );
       expect( fn.addToFoo ).toHaveBeenCalledWith( 25 );
     });
 
-    xit('calls each success handler once per attachment', function(){
+    it('calls each success handler once per attachment', function(){
       promiseForNum.then( fn.setFoo10 );
       promiseForNum.then( fn.addToFoo );
       promiseForNum.then( fn.addToFoo );
@@ -107,7 +107,7 @@ describe('A promise', function(){
       expect( fn.addToFoo ).toHaveBeenCalledWith( 25 );
     });
 
-    xit('calls each success handler when added', function(){
+    it('calls each success handler when added', function(){
       promiseForNum.then( fn.setFoo10 );
       expect( foo ).toBe( 10 );
       promiseForNum.then( fn.addToFoo );
@@ -120,13 +120,13 @@ describe('A promise', function(){
   // But what if events occur in opposite order?
   describe('that already has a success handler', function(){
 
-    xit('calls that handler when resolved', function(){
+    it('calls that handler when resolved', function(){
       promiseForNum.then( fn.setFoo10 );
       numDeferral.resolve();
       expect( fn.setFoo10 ).toHaveBeenCalled();
     });
 
-    xit('calls all its success handlers in order one time when resolved', function(){
+    it('calls all its success handlers in order one time when resolved', function(){
       promiseForNum.then( fn.setFoo10 );
       promiseForNum.then( fn.addToFoo );
       numDeferral.resolve( 25 );
